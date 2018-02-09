@@ -1,0 +1,16 @@
+---
+- name: Update and upgrade apt packages
+  apt:
+    upgrade: yes
+    update_cache: yes
+
+- name: Install bootstrapping Deps (Curl, Sudo, Wget)
+  apt:
+    name: "{{ items }}"
+    state: latest
+    with_items:
+    - 'sudo'
+    - 'curl'
+    - 'wget'
+  become: true
+  become_method: su

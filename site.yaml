@@ -1,0 +1,18 @@
+- hosts: all
+  roles:
+    - common
+    # - ipfs
+    # - zabbix
+# - hosts: upldrg
+#   roles:
+#     - nginxupldrg
+#     - gputesla
+# - hosts: upldr
+#   roles:
+#     - nginxupldr
+# - hosts: saver
+#   roles:
+#     - nginxsaver
+# - hosts: snap
+#   roles:
+#     - nginxsnap
