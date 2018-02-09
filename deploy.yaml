@@ -1,0 +1,8 @@
+---
+- hosts: all
+  roles:
+    - common
+    - upldrg
+    - upldr
+    - saver
+    - snap

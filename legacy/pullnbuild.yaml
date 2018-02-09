@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+        - git:
+            repo: 'https://github.com/dtube/ipfs-uploader.git'
+            dest: /home/heimindanger/ipfs-uploader/
+          shell:
+              cmd: dotnet publish -c release
+              chdir: /home/heimindanger/ipfs-uploader/
+        - command:
+
+          dotnet  /home/heimindanger/ipfs-uploader/bin/release/netcoreapp2.0/Uploader.dll
+          become: true
+          become_user: heimindanger
