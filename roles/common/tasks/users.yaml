@@ -1,8 +1,9 @@
----
-- name: Installing users, keys and dtube group
+- name: Installing "dtube" group
   group:
       name: dtube
       state: present
+
+- name: Installing user accounts for Heimindanger and Dabbott
   user:
       name: "{{ item }}"
       shell: /bin/bash
@@ -10,21 +11,29 @@
   with_items:
     - 'dabbott'
     - 'heimindanger'
+
+- name: Installing dabbott key for dabbott user
   authorized_key:
       user: dabbott
       state: present
       manage_dir: yes
       key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF/suWYXT8eekUrkoRyOH+m08JFc0mNuREAMc6vH1p4b/RPP98Zvs6lcAsnR6Odb4v+WOI7nrxNWFomRaM8aRl9+OmaGDJi/nPyc3cCxH0KEk3EvXn+qocOosGqMAUbSgfQBaH8Ee86+KEyIrQ4jV2xPOc2Mand+iNnU5XKiFthQ1WOAiDjDepS6tpssnCCWN6N5C0aCwussePTh4rbEl4FXZcK5BdcCRK2Lq5z7g+D29g2Eip16V1/r4ZVa4op5FP3LSlJN8KjIQXc8h+1BuAQjeE8+DzMSiIOP3hfby+ovOciudR+kIxePSWiovlvtnrjLJ+SfXZ+FB0ju5YKYmP dabbott"
+
+- name: Installing heimindanger key for heimindanger user
   authorized_key:
       user: heimindanger
       state: present
       manage_dir: yes
       key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWSLsT95A+hsph+fiBHKmIKN32GE2/OLK+vviKGQBBKWIXQ79NsqlVkeQEOjm2J8Zc135mkQO5DbQsjAyl+DsvjMllCCbhRakdelAOfPdiox4E7wIM4P+ppH9eJC5QlEGPgufklLSXSeO1ihSINtQWhcmPuniH8wbHhVTYJTAuywE5kACUaZKj4FB+Jjh5sZIOp9KR7e5+AtwNQOcSucj/xj9Vk4hd8IO9j1zhCKupIIlOAiP0RZXJ9WlUdsV3bAVFrbQEk9Z7P1Sghxblclmx6lVHQ8unKGj+1gUMaJfuqzVDeKu8j5EBCucBvqitEUX0wkrJ1WDjQx/7xn7IQy9d heimindanger"
+
+- name: Installing Dabbott key for root user
   authorized_key:
         user: root
         state: present
         manage_dir: yes
         key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF/suWYXT8eekUrkoRyOH+m08JFc0mNuREAMc6vH1p4b/RPP98Zvs6lcAsnR6Odb4v+WOI7nrxNWFomRaM8aRl9+OmaGDJi/nPyc3cCxH0KEk3EvXn+qocOosGqMAUbSgfQBaH8Ee86+KEyIrQ4jV2xPOc2Mand+iNnU5XKiFthQ1WOAiDjDepS6tpssnCCWN6N5C0aCwussePTh4rbEl4FXZcK5BdcCRK2Lq5z7g+D29g2Eip16V1/r4ZVa4op5FP3LSlJN8KjIQXc8h+1BuAQjeE8+DzMSiIOP3hfby+ovOciudR+kIxePSWiovlvtnrjLJ+SfXZ+FB0ju5YKYmP dabbott"
+
+- name: Setting nopasswd sudo privileges
   lineinfile:
         dest: /etc/sudoers
         state: present

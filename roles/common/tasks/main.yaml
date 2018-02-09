@@ -1,3 +1,3 @@
 ---
-- include: users.yaml
-- include: apt.yaml
+- import_tasks: apt.yaml
+- import_tasks: users.yaml
