@@ -7,11 +7,17 @@
 
 - name: Install bootstrapping Deps (Curl, Sudo, Wget)
   apt:
-    name: "{{ items }}"
+    name: "{{ item }}"
     state: latest
-    with_items:
+  with_items:
     - 'sudo'
     - 'curl'
     - 'wget'
+    - 'htop'
+    - 'nload'
+    - 'locate'
+    - 'vim'
+    - 'zabbix-agent'
+    - 'tmux'
   become: true
   become_method: su
