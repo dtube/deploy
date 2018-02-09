@@ -9,9 +9,9 @@
       name: "{{ item }}"
       shell: /bin/bash
       group: dtube
-    with_items:
-      - dabbott
-      - heimindanger
+  with_items:
+    - 'dabbott'
+    - 'heimindanger'
   authorized_key:
       user: dabbott
       state: present
