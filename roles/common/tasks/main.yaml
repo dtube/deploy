@@ -1,5 +1,6 @@
 ---
 -
+  tasks:
   - name: Installing users, keys and dtube group
   group:
       name: dtube
