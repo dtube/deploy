@@ -2,6 +2,8 @@
   apt:
     upgrade: yes
     update_cache: yes
+  become: true
+  become_method: su
 
 - name: Install bootstrapping Deps (Curl, Sudo, Wget)
   apt:
