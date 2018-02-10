@@ -2,10 +2,8 @@
   apt:
     upgrade: yes
     update_cache: yes
-  become: true
-  become_method: su
 
-- name: Install bootstrapping Deps (Curl, Sudo, Wget)
+- name: Installing common tools with apt
   apt:
     name: "{{ item }}"
     state: latest
@@ -19,5 +17,7 @@
     - 'vim'
     - 'zabbix-agent'
     - 'tmux'
+    - 'acl'
+    - 'net-tools'
   become: true
-  become_method: su
+  become_user: root

@@ -1,0 +1,26 @@
+
+- name: Chaning permissions on ipfs binary making it dabbott:dtube 0770
+  file:
+    path: /usr/local/bin/ipfs
+    owner: dabbott
+    group: dtube
+    mode: 0770
+
+- name: Running ipfs init
+  command: /usr/local/bin/ipfs init creates=/home/heimindanger/.ipfs/config
+  become: true
+  become_user: heimindanger
+  become_method: sudo
+
+- name: Starting ipfs tmux session as heimindanger (may fail when session already exists)
+  command: tmux new -d -s ipfs
+  become: true
+  become_user: heimindanger
+  become_method: sudo
+  ignore_errors: yes
+
+- name: Starting ipfs daemon in afforementioned tmux session as heimindanger
+  command: tmux send -t ipfs.0 "IPFS_FD_MAX=32768 ipfs daemon" ENTER
+  become: true
+  become_user: heimindanger
+  become_method: sudo

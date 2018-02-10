@@ -1,14 +1,14 @@
 - hosts: all
   roles:
     - common
-    # - ipfs
-    # - zabbix
+    - ipfs
 # - hosts: upldrg
 #   roles:
 #     - nginxupldrg
 #     - gputesla
-# - hosts: upldr
-#   roles:
+ - hosts: upldr
+   roles:
+      - ipfs-uploader-debian
 #     - nginxupldr
 # - hosts: saver
 #   roles:
@@ -16,3 +16,6 @@
 # - hosts: snap
 #   roles:
 #     - nginxsnap
+# - hosts: zabbix
+#    roles:
+#      - zabbix
