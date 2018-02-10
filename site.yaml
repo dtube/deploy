@@ -6,9 +6,10 @@
 #   roles:
 #     - nginxupldrg
 #     - gputesla
- - hosts: upldr
-   roles:
-      - ipfs-uploader-debian
+- hosts: upldr
+  roles:
+    - ipfs-uploader-debian
+
 #     - nginxupldr
 # - hosts: saver
 #   roles:

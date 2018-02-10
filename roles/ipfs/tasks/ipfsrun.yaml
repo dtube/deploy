@@ -1,5 +1,4 @@
-
-- name: Chaning permissions on ipfs binary making it dabbott:dtube 0770
+- name: Changing permissions on ipfs binary making it dabbott:dtube 0770
   file:
     path: /usr/local/bin/ipfs
     owner: dabbott
@@ -7,7 +6,9 @@
     mode: 0770
 
 - name: Running ipfs init
-  command: /usr/local/bin/ipfs init creates=/home/heimindanger/.ipfs/config
+  command: /usr/local/bin/ipfs init
+  args:
+    creates: /home/heimindanger/.ipfs/config
   become: true
   become_user: heimindanger
   become_method: sudo

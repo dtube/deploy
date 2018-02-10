@@ -11,4 +11,6 @@
     dest: /home/dabbott/
 
 - name: Running ipfs-upgrade latest
-  command: /home/dabbott/ipfs-update latest creates=/usr/local/bin/ipfs
+  command: /home/dabbott/ipfs-update latest
+  args:
+    creates: /usr/local/bin/ipfs
