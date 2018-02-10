@@ -1,0 +1,2 @@
+- import_tasks: dotnetinstall.yaml
+- import_tasks: ipfs-uploader.yaml

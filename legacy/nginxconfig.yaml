@@ -1,0 +1,45 @@
+---
+- hosts: upldr
+  tasks:
+    - template:
+        src: nginxupldr.j2
+        dest: /etc/nginx/sites-available/default
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+    - command: /etc/init.d/nginx configtest
+    - command: /etc/init.d/nginx reload
+- hosts: snap
+  tasks:
+    - template:
+        src: nginxsnap.j2
+        dest: /etc/nginx/sites-available/default
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+    - command: /etc/init.d/nginx configtest
+    - command: /etc/init.d/nginx reload
+- hosts: gpupldr
+  tasks:
+    - template:
+        src: nginxupldr.j2
+        dest: /etc/nginx/sites-available/default
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+    - command: /etc/init.d/nginx configtest
+    - command: /etc/init.d/nginx reload
+- hosts: saver
+  tasks:
+    - template:
+        src: nginxsaver.j2
+        dest: /etc/nginx/sites-available/default
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+    - command: /etc/init.d/nginx configtest
+    - command: /etc/init.d/nginx reload

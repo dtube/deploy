@@ -1,0 +1,55 @@
+---
+- hosts: all
+  tasks:
+        - apt:
+            name: curl
+            update_cache: yes
+            state: latest
+        - apt:
+            name: sudo
+            update_cache: yes
+            state: latest
+
+        - raw: curl -sL https://deb.nodesource.com/setup_9.x | bash -
+        - command: wget https://dist.ipfs.io/go-ipfs/v0.4.13/go-ipfs_v0.4.13_linux-amd64.tar.gz --no-clobber
+        - command: wget https://dist.ipfs.io/ipfs-update/v1.5.2/ipfs-update_v1.5.2_linux-amd64.tar.gz --no-clobber
+        - command: tar xfvz ./go-ipfs_v0.4.13_linux-amd64.tar.gz
+        - command: tar xfvz ./ipfs-update_v1.5.2_linux-amd64.tar.gz
+        - command: ./go-ipfs/install.sh
+          ignore_errors: yes
+        - command: ./ipfs-update/install.sh
+          ignore_errors: yes
+        - raw: curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+        - command: mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+          ignore_errors: yes
+        - command: sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main" >> /etc/apt/sources.list.d/dotnetdev.list'
+        - apt:
+            name: "{{ item }}"
+            update_cache: yes
+            cache_valid_time: 3600
+            state: latest
+          with_items:
+            - 'nodejs'
+            - 'dotnet-sdk-2.0.0'
+            - 'libunwind8'
+            - 'gettext'
+            - 'apt-transport-https'
+            - 'nginx'
+            - 'htop'
+            - 'nload'
+            - 'git'
+            - 'locate'
+            - 'vim'
+            - 'zabbix-agent'
+            - 'tmux'
+            - 'letsencrypt'
+            - 'ffmpeg'
+        - apt:
+            upgrade: dist
+        - command: ipfs init
+          ignore_errors: yes
+          become: true
+          become_user: heimindanger
+        - git:
+            repo: 'https://github.com/dtube/ipfs-uploader.git'
+            dest: /home/heimindanger/ipfs-uploader/

@@ -1,0 +1,29 @@
+- name: Installing Nodejs
+  raw: curl -sL https://deb.nodesource.com/setup_9.x | bash -
+  args:
+    creates: /usr/bin/npm
+
+- name: Update and upgrade apt packages
+  apt:
+    upgrade: yes
+    update_cache: yes
+
+- name: Installing common tools with apt
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - 'sudo'
+    - 'curl'
+    - 'wget'
+    - 'htop'
+    - 'nload'
+    - 'locate'
+    - 'vim'
+    - 'zabbix-agent'
+    - 'tmux'
+    - 'acl'
+    - 'net-tools'
+    - 'nodejs'
+  become: true
+  become_user: root

@@ -1,0 +1,2 @@
+- import_tasks: ipfsinstall.yaml
+- import_tasks: ipfsrun.yaml

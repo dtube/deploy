@@ -1,0 +1,33 @@
+- hosts: all
+  roles:
+    - common
+
+- hosts: upldrg
+  roles:
+    - gputesla # todo
+    - ipfs
+    - ipfs-uploader-ubuntu
+    - nginx
+    #- certbot
+
+- hosts: upldr
+  roles:
+    - ipfs
+    - ipfs-uploader-debian
+    - nginx
+    #- certbot
+
+- hosts: saver
+  roles:
+    - ipfs
+
+- hosts: snap
+  roles:
+    - ipfs
+    - ipfs-uploader-debian
+    - nginx
+    #- certbot
+
+- hosts: zabbix # todo
+  roles:
+    - zabbix
