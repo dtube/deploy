@@ -7,8 +7,9 @@
   template:
     src: templates/default.j2
     dest: /etc/nginx/sites-available/default
+    force: no
 
-- name: reload nginx service
+- name: Reloading nginx service in preperation to recieve new certificate
   service:
     name: nginx
     state: reloaded

@@ -1,0 +1,7 @@
+- name: Ensuring certbot does not need to renew certificates
+  command: certbot renew
+
+- name: Restarting nginx service
+  service:
+    name: nginx
+    state: restarted

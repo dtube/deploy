@@ -1,0 +1,4 @@
+- name: Installing certbot with apt
+  apt:
+    name: certbot
+    state: latest

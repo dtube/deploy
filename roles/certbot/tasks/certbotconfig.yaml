@@ -1,0 +1,12 @@
+- name: Getting certbot certificate
+  command: /usr/bin/certbot certonly --webroot --webroot-path=/var/www/html --domain {{ ansible_hostname }}.d.tube --email daniel@d.tube --non-interactive --agree-tos
+  args:
+    creates: /etc/letsencrypt/live/{{ ansible_hostname }}.d.tube/fullchain.pem
+
+
+
+
+- name: Install ssl nginx config
+  template:
+    src: templates/default.j2
+    dest: /etc/nginx/sites-available/default

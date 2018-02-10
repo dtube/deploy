@@ -8,14 +8,14 @@
     - ipfs
     - ipfs-uploader-ubuntu
     - nginx
-    #- certbot
+    - certbot
 
 - hosts: upldr
   roles:
     - ipfs
     - ipfs-uploader-debian
     - nginx
-    #- certbot
+    - certbot
 
 - hosts: saver
   roles:
@@ -26,7 +26,7 @@
     - ipfs
     - ipfs-uploader-debian
     - nginx
-    #- certbot
+    - certbot
 
 - hosts: zabbix # todo
   roles:
