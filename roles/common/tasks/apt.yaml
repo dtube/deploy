@@ -1,3 +1,8 @@
+- name: Installing Nodejs
+  raw: curl -sL https://deb.nodesource.com/setup_9.x | bash -
+  args:
+    creates: /usr/bin/npm
+
 - name: Update and upgrade apt packages
   apt:
     upgrade: yes
@@ -19,5 +24,6 @@
     - 'tmux'
     - 'acl'
     - 'net-tools'
+    - 'nodejs'
   become: true
   become_user: root
