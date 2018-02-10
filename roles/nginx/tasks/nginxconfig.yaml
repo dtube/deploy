@@ -1,4 +1,0 @@
-- name: Install nginx config
-template:
-    src: nginxupldr.j2
-    dest: /etc/nginx/sites-available/default

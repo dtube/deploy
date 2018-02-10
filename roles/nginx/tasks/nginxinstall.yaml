@@ -3,7 +3,12 @@
     name: nginx
     state: latest
 
--name: Start nginx service
+- name: Install nginx config
+  template:
+    src: templates/default.j2
+    dest: /etc/nginx/sites-available/default
+
+- name: reload nginx service
   service:
     name: nginx
-    state: started
+    state: reloaded

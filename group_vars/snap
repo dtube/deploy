@@ -1,5 +1,0 @@
-
-upldrg 'location ~(/index.html|/uploadVideo|/scripts/|/getProgressByToken/|/getProgressBySourceHash/|/getStatus)'
- upldr 'location ~(/index.html|/uploadVideo|/uploadImage|/scripts/|/getProgressByToken/|/getProgressBySourceHash/|/uploadImage/*|/getStatus)'
-
- snap 'location ~(/uploadImage|/scripts/|/getProgressByToken/|/getProgressBySourceHash/|/getStatus)'
