@@ -1,5 +1,5 @@
  server {
-  listen 80 default_server;
+  listen 80 {{ ansible_hostname }}.d.tube;
   client_max_body_size 100G;
   access_log /var/log/nginx/access.log;
 
