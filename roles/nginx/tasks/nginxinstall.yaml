@@ -6,7 +6,7 @@
 - name: Install nginx config
   template:
     src: templates/default.j2
-    dest: /etc/nginx/sites-available/default
+    dest: /etc/nginx/sites-enabled/default
     force: no
 
 - name: Reloading nginx service in preperation to recieve new certificate
