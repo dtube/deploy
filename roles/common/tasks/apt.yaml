@@ -25,5 +25,6 @@
     - 'acl'
     - 'net-tools'
     - 'nodejs'
+    - 'ffmpeg'
   become: true
   become_user: root
