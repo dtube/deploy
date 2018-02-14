@@ -1,3 +1,7 @@
+- name: Installing python so Ansible can run first time
+  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+  become: true
+
 - name: Installing Nodejs
   raw: curl -sL https://deb.nodesource.com/setup_9.x | bash -
   args:
