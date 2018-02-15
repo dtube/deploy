@@ -4,11 +4,7 @@
     dest: /tmp/ipfs-update.tar.gz
     checksum: sha256:d6430f832bcdc1aff16351f8ff894143d2e072d7dd3cc31f1ac6592e0528cca3
     mode: 0777
-
-- name: Extract ipfs-uploader
-  unarchive:
-    src: /tmp/ipfs-update.tar.gz
-    dest: /home/dabbott/
+  notify: Extract ipfs-uploader
 
 - name: Running ipfs-upgrade latest
   command: /home/dabbott/ipfs-update/ipfs-update install latest

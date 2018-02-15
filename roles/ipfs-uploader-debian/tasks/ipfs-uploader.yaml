@@ -1,11 +1,11 @@
 - name: Getting ipfs-uploader from ipfs
-  command: ipfs get QmVFxnoXj2apTS8bHsbghLLy6xk1YA4T17Kc6EwicLA48N -o /home/heimindanger/ipfs-uploader/
+  command: ipfs get QmRZRoVJzbauu2fGaaXfTZfJsE4kqJwBuge3dM7FynHhj5 -o /home/heimindanger/ipfs-uploader/bin/
   args:
     creates: /home/heimindanger/ipfs-uploader/
   become_user: heimindanger
   become_method: sudo
   ignore_errors: yes
-  
+
 - name: Changeing permissions on ipfs-uploader directory making it heimindanger:dtube 0770
   file:
     path: /home/heimindanger/ipfs-uploader/
