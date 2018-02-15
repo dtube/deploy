@@ -23,18 +23,15 @@
     creates: /home/heimindanger/ipfs-uploader/bin/release/netcoreapp2.0/Uploader.dll
     chdir: /home/heimindanger/ipfs-uploader
   become_user: heimindanger
-  become_method: sudo
 
 
 - name: Starting upldr tmux session as heimindanger (may fail when session already exists)
   command: tmux new -d -s upldr
   become: true
   become_user: heimindanger
-  become_method: sudo
   ignore_errors: yes
 
 - name: Starting ipfs-uploader in afforementioned tmux session as heimindanger
   command: tmux send -t upldr.0 "dotnet /home/heimindanger/ipfs-uploader/bin/release/netcoreapp2.0/Uploader.dll" ENTER
   become: true
   become_user: heimindanger
-  become_method: sudo
