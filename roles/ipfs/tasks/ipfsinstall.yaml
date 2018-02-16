@@ -10,9 +10,3 @@
   command: /home/dabbott/ipfs-update/ipfs-update install latest
   args:
     creates: /usr/local/bin/ipfs
-- name: Ensuring heimindanger can run ipfs
-  file:
-    path: /usr/local/bin/ipfs
-    owner: heimindanger
-    group: dtube
-    mode: 0777
