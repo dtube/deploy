@@ -1,4 +1,4 @@
-- name: Restarting nginx service
+- name: Reloading nginx service
   service:
     name: nginx
-    state: restarted
+    state: reloaded

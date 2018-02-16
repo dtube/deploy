@@ -1,9 +1,10 @@
-- name: Changing permissions on ipfs binary making it dabbott:dtube 0770
+- name: Changing permissions on ipfs binary making it heimindanger:dtube 0770
   file:
     path: /usr/local/bin/ipfs
-    owner: dabbott
+    owner: heimindanger
     group: dtube
-    mode: 0770
+    mode: 0777
+
 
 - name: Running ipfs init
   command: /usr/local/bin/ipfs init

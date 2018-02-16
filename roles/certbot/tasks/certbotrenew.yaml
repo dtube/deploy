@@ -1,3 +1,3 @@
 - name: Ensuring certbot does not need to renew certificates
   command: certbot renew
-  notify: Restarting nginx service
+  notify: Reloading nginx service

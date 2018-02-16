@@ -39,3 +39,4 @@
     - 'net-tools'
     - 'nodejs'
     - 'ffmpeg'
+    - 'unzip'
