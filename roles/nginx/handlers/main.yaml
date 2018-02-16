@@ -1,0 +1,4 @@
+- name: Reloading nginx service in preperation to recieve new certificate
+  service:
+    name: nginx
+    state: reloaded

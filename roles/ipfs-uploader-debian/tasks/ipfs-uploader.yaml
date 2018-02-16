@@ -1,11 +1,20 @@
-- name: Getting ipfs-uploader from ipfs
-  command: ipfs get QmVFxnoXj2apTS8bHsbghLLy6xk1YA4T17Kc6EwicLA48N -o /home/heimindanger/ipfs-uploader/
-  args:
-    creates: /home/heimindanger/ipfs-uploader/
+- name: Exporting environment variable for cpu hosts
+  lineinfile:
+        dest: /etc/environment
+        state: present
+        regexp: '^ASPNETCORE_ENVIRONMENT=prodcpu'
+        line: 'ASPNETCORE_ENVIRONMENT=prodcpu'
+        create: true
+
+- name: Copying and unzipping ipfs-uploader from local host.
+  copy:
+    src: ipfs-uploader.zip
+    dest: /home/heimindanger/
+    mode: 0777
   become_user: heimindanger
   become_method: sudo
-  ignore_errors: yes
-  
+  notify: Installing new ipfs-uploader
+
 - name: Changeing permissions on ipfs-uploader directory making it heimindanger:dtube 0770
   file:
     path: /home/heimindanger/ipfs-uploader/

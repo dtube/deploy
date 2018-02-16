@@ -35,8 +35,6 @@
         state: present
         manage_dir: yes
         key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF/suWYXT8eekUrkoRyOH+m08JFc0mNuREAMc6vH1p4b/RPP98Zvs6lcAsnR6Odb4v+WOI7nrxNWFomRaM8aRl9+OmaGDJi/nPyc3cCxH0KEk3EvXn+qocOosGqMAUbSgfQBaH8Ee86+KEyIrQ4jV2xPOc2Mand+iNnU5XKiFthQ1WOAiDjDepS6tpssnCCWN6N5C0aCwussePTh4rbEl4FXZcK5BdcCRK2Lq5z7g+D29g2Eip16V1/r4ZVa4op5FP3LSlJN8KjIQXc8h+1BuAQjeE8+DzMSiIOP3hfby+ovOciudR+kIxePSWiovlvtnrjLJ+SfXZ+FB0ju5YKYmP dabbott"
-  become: true
-  become_method: sudo
 
 - name: Setting nopasswd sudo privileges
   lineinfile:
