@@ -1,0 +1,16 @@
+- name: Installing Zabbix server and dependancies with apt
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - 'php7.0-xml'
+    - 'php7.0-bcmath'
+    - 'php7.0-mbstring'
+    - 'zabbix-server-mysql'
+    - 'zabbix-frontend-php'
+
+
+- name: Starting zabbix-server service
+  service:
+    name: zabbix-server
+    state: started

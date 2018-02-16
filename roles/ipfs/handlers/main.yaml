@@ -1,0 +1,4 @@
+- name: Extract ipfs-uploader
+  unarchive:
+    src: /tmp/ipfs-update.tar.gz
+    dest: /home/dabbott/
