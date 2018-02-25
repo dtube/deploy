@@ -1,0 +1,10 @@
+/home/heimindanger/ipfs-uploader/bin/release/netcoreapp2.0/Uploader.deps.json
+/home/heimindanger/ipfs-uploader/bin/release/netcoreapp2.0/Uploader.runtimeconfig.json
+/home/heimindanger/ipfs-uploader/bin/release/netcoreapp2.0/Uploader.runtimeconfig.dev.json
+/home/heimindanger/ipfs-uploader/bin/release/netcoreapp2.0/Uploader.dll
+/home/heimindanger/ipfs-uploader/bin/release/netcoreapp2.0/Uploader.pdb
+/home/heimindanger/ipfs-uploader/obj/release/netcoreapp2.0/Uploader.csproj.CoreCompileInputs.cache
+/home/heimindanger/ipfs-uploader/obj/release/netcoreapp2.0/Uploader.AssemblyInfoInputs.cache
+/home/heimindanger/ipfs-uploader/obj/release/netcoreapp2.0/Uploader.AssemblyInfo.cs
+/home/heimindanger/ipfs-uploader/obj/release/netcoreapp2.0/Uploader.dll
+/home/heimindanger/ipfs-uploader/obj/release/netcoreapp2.0/Uploader.pdb
