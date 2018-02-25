@@ -1,0 +1,65 @@
+- name: Exporting environment variable for gpu hosts
+  lineinfile:
+        dest: /etc/environment
+        state: present
+        regexp: '^ASPNETCORE_ENVIRONMENT=prodgpu'
+        line: 'ASPNETCORE_ENVIRONMENT=prodgpu'
+        create: true
+
+- name: Copying ffmpeg to host.
+  copy:
+    src: ffmpeg
+    dest: /usr/local/bin/
+    mode: 0777
+
+- name: Installing non-free sources
+  lineinfile:
+        dest: /etc/apt/sources.list.d/nonfree.list
+        state: present
+        regexp: '^deb http://ftp.debian.org/debian jessie main contrib non-free'
+        line: 'deb http://ftp.debian.org/debian jessie main contrib non-free'
+        create: true
+
+- name: Blacklisting nouveau
+  lineinfile:
+        dest: /etc/modprobe.d/nouveau-kms.conf
+        state: present
+        regexp: '^options nouveau modeset=0'
+        line: 'options nouveau modeset=0 '
+        create: true
+
+- name: Updating apt to see non-free items
+  apt:
+    upgrade: yes
+    update_cache: yes
+
+- name: Installing dependancies with apt
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - build-essential
+    - vdpau-va-driver
+    - libnppi6.0
+    - yasm
+    - linux-headers-3.16.0-4-amd64
+
+- name: Updating boot config
+  command: update-initramfs -u
+  args:
+    creates: /boot/initrd.img-3.16.0-4-amd64
+  become: true
+
+- name: Downloading Nvidia drivers
+  get_url:
+    url: http://us.download.nvidia.com/XFree86/Linux-x86_64/390.25/NVIDIA-Linux-x86_64-390.25.run
+    dest: /home/dabbott/Nvid.run
+    mode: 0777
+
+- name: Installing nvidia drivers
+  command: /home/dabbott/Nvid.run -a -z --no-x-check -c -s
+  args:
+    creates: /usr/bin/nvidia-smi
+  become: true
+
+#./ffmpeg -y -hwaccel cuvid -c:v h264_cuvid -vsync 0 -i 1.mp4 -vf scale_npp=1920:1072 -vcodec h264_nvenc nannalout.mp4

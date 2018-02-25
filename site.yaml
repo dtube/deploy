@@ -4,30 +4,31 @@
 
 - hosts: upldrg
   roles:
-    - gputesla # todo
+    - gpu
     - ipfs
-    - ipfs-uploader-ubuntu
+    - ipfs-uploader
     - nginx
     - certbot
 
 - hosts: upldr
   roles:
     - ipfs
-    - ipfs-uploader-debian
+    - ipfs-uploader
     - nginx
     - certbot
 
 - hosts: saver
   roles:
     - ipfs
+    - maria
 
 - hosts: snap
   roles:
     - ipfs
-    - ipfs-uploader-debian
+    - ipfs-uploader
     - nginx
     - certbot
 
-- hosts: zabbix # todo
+- hosts: zabbix
   roles:
     - zabbix

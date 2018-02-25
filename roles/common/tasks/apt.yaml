@@ -38,5 +38,4 @@
     - 'acl'
     - 'net-tools'
     - 'nodejs'
-    - 'ffmpeg'
     - 'unzip'

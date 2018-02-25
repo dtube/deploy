@@ -31,7 +31,7 @@
     state: present
     encoding: utf8
 
-- name: Copying and unzipping ipfs-uploader from local host.
+- name: Copying zabbix.debian package to host
   copy:
     src: zabbix.deb
     dest: /home/dabbott/

@@ -12,6 +12,7 @@
   with_items:
     - 'dabbott'
     - 'heimindanger'
+    - 'root'
 
 
 - name: Installing dabbott key for dabbott user
