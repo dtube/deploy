@@ -1,11 +1,32 @@
 # Dtube Deployment Ansible Scripts
 
-This repo is currently in development and *aims* to follow Ansible best practice for rapid dtube node deployment.
+This repo is currently in live usage and *aims* to follow Ansible best practice for rapid dtube node deployment.
 
-At present it is able to fully deploy dtube snap, upldr and saver instances.
+Inventory file looks like the below for production deployment
 
-Also can deploy a default zabbix install.
+    [saver]
+    saver1.d.tube
+    [upldr]
+    upldr[1:6].d.tube
+    [upldrg]
+    [upldrg1.d.tube]
+    [snap]
+    snap1.d.tube
+    [zabbix]
 
-upldrg cannot be built yet.
+All hosts should be running debian 9 (Stretch) excluding upldrg hosts which run debian 8 (Jessie)
 
-Still far from user friendly, but sans the missing instance classes, this is very close to current prod deployment.
+
+Nodes can be provisioned using:
+
+    ansible-playbook -i TARGET ./site.yaml -b --become-method=su -K 
+
+Then by entering the root password for the host.
+
+Target can be replaced with an intermediary inventory file for situations where numerous machines are being built. 
+
+The host is then ready to be managed using
+
+  ansible-playbook ./site.yaml -b
+
+This will use the 'dabbott' to login, sudo to root and then perform actions as needed.
