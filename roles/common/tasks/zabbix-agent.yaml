@@ -1,0 +1,10 @@
+- name: Copying zabbix agent conf to zabbix directory
+  copy:
+    src: zabbix_agentd.conf
+    dest: /etc/zabbix/
+    mode: 0777
+
+- name: Restarting apache and zabbix services
+  service:
+    name: "zabbix-agent"
+    state: restarted

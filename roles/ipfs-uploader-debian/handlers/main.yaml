@@ -1,8 +1,0 @@
-- name: Installing new ipfs-uploader
-  unarchive:
-    src: /home/heimindanger/ipfs-uploader.zip
-    dest: /home/heimindanger/
-  notify: Ending old ipfs-uploader instance
-
-- name: Ending old ipfs-uploader instance
-  command: pkill dotnet -9

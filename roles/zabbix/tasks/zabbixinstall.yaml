@@ -1,16 +1,94 @@
-- name: Installing Zabbix server and dependancies with apt
+- name: Installing Zabbix dependancies with apt
   apt:
     name: "{{ item }}"
     state: latest
   with_items:
-    - 'php7.0-xml'
+    - 'apache2'
+    - 'php7.0'
+    - 'php7.0-mysql'
+    - 'php7.0-ldap'
     - 'php7.0-bcmath'
     - 'php7.0-mbstring'
-    - 'zabbix-server-mysql'
+    - 'php7.0-gd'
+    - 'php7.0-xml'
+    - 'php7.0-mcrypt'
+    - 'mariadb-server'
+    - 'mariadb-client'
+    - 'python-mysqldb'
+    - 'libmariadbd18'
+    - 'libmariadbd-dev'
+
+- name: Creating zabbix mysql user
+  mysql_user:
+    name: zabbix
+    password: zabbix
+    priv: '*.*:ALL'
+    state: present
+
+- name: Creating Zabbix database
+  mysql_db:
+    name: zabbix
+    state: present
+    encoding: utf8
+
+- name: Copying zabbix.debian package to host
+  copy:
+    src: zabbix.deb
+    dest: /home/dabbott/
+    mode: 0777
+
+- name: Installing zabbix.deb package
+  apt:
+    deb: /home/dabbott/zabbix.deb
+
+- name: Updating apt cache so we can see zabbix front end
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Installing Zabbix server and front end with apt
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
     - 'zabbix-frontend-php'
+    - 'zabbix-server-mysql'
+
+- name: Extracting zabbix user table
+  unarchive:
+    src: create.zip
+    dest: /home/dabbott/
+
+- name: Importing zabbix.sql
+  mysql_db:
+    state: import
+    name: zabbix
+    target: /home/dabbott/create.sql
+  ignore_errors: yes
+
+- name: Copying php.ini to php directory
+  copy:
+    src: php.ini
+    dest: /etc/php/7.0/apache2/php.ini
+    mode: 0777
+
+- name: Copying zabbix server conf to zabbix directory
+  copy:
+    src: zabbix_server.conf
+    dest: /etc/zabbix/
+    mode: 0777
+
+- name: Copying apache conf to apache2 directory
+  copy:
+    src: apache.conf
+    dest: /etc/apache2/
+    mode: 0777
 
 
-- name: Starting zabbix-server service
+- name: Restarting apache and zabbix services
   service:
-    name: zabbix-server
-    state: started
+    name: "{{ item }}"
+    state: restarted
+  with_items:
+    - 'zabbix-server'
+    - 'apache2'

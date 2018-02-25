@@ -1,4 +1,27 @@
-- name: Installing certbot with apt
+- name: Exporting environment variable for cpu hosts
+  lineinfile:
+        dest: /etc/apt/sources.list.d/backports.list
+        state: present
+        regexp: '^deb http://ftp.debian.org/debian jessie-backports main'
+        line: 'deb http://ftp.debian.org/debian jessie-backports main'
+        create: true
+  when: ansible_distribution_major_version == "8"
+
+- name: Update apt cache so we can see certbot on jessie
+  apt:
+    update_cache: yes
+  become: yes
+  when: ansible_distribution_major_version == "8"
+
+- name: Installing certbot with apt on Stretch
   apt:
     name: certbot
     state: latest
+  when: ansible_distribution_major_version == "9"
+
+- name: Installing certbot with apt on Jessie
+  apt:
+    name: python-certbot-apache
+    default_release: jessie-backports
+    state: latest
+  when: ansible_distribution_major_version == "8"
