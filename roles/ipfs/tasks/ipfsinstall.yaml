@@ -7,6 +7,7 @@
 
 - name: Extracting ipfs-uploader
   unarchive:
+    remote_src: true
     src: /tmp/ipfs-update.tar.gz
     dest: /home/dabbott/
   ignore_errors: true

@@ -1,0 +1,24 @@
+2018-02-27 11:13:25,121 [22] INFO  - [Start Sprite] SourceFilePath cbcaehiy.mp4
+2018-02-27 11:13:25,122 [22] INFO  - [Launch command] ffmpeg -y -i cbcaehiy.mp4 -r 1 -vf scale=210:118 -f image2 3rscnwlz-%03d.jpeg
+2018-02-27 11:13:27,271 [22] INFO  - [Start Combine images] 47 images
+2018-02-27 11:13:27,639 [22] INFO  - [End Sprite] OutputFileName 3rscnwlz.jpeg / FileSize 256880
+2018-02-27 11:16:15,656 [22] INFO  - [Start Sprite] SourceFilePath opdm2cbc.mp4
+2018-02-27 11:16:15,656 [22] INFO  - [Launch command] ffmpeg -y -i opdm2cbc.mp4 -r 1 -vf scale=210:118 -f image2 j3l1gg2m-%03d.jpeg
+2018-02-27 11:16:17,704 [22] INFO  - [Start Combine images] 47 images
+2018-02-27 11:16:17,782 [22] INFO  - [End Sprite] OutputFileName j3l1gg2m.jpeg / FileSize 256880
+2018-02-27 11:21:15,816 [22] INFO  - [Start Sprite] SourceFilePath sz3dnscm.mp4
+2018-02-27 11:21:15,816 [22] INFO  - [Launch command] ffmpeg -y -i sz3dnscm.mp4 -r 1 -vf scale=210:118 -f image2 o2ufnsi2-%03d.jpeg
+2018-02-27 11:21:17,761 [22] INFO  - [Start Combine images] 47 images
+2018-02-27 11:21:17,839 [22] INFO  - [End Sprite] OutputFileName o2ufnsi2.jpeg / FileSize 256880
+2018-02-27 18:07:57,627 [22] INFO  - [Start Sprite] SourceFilePath 5nvsreko.mp4
+2018-02-27 18:07:57,628 [22] INFO  - [Launch command] ffmpeg -y -i 5nvsreko.mp4 -r 1 -vf scale=210:118 -f image2 aa4q5pgz-%03d.jpeg
+2018-02-27 18:07:59,775 [22] INFO  - [Start Combine images] 47 images
+2018-02-27 18:07:59,857 [22] INFO  - [End Sprite] OutputFileName aa4q5pgz.jpeg / FileSize 256880
+2018-02-27 18:22:06,949 [22] INFO  - [Start Sprite] SourceFilePath m4jhgi1k.mp4
+2018-02-27 18:22:06,949 [22] INFO  - [Launch command] ffmpeg -y -i m4jhgi1k.mp4 -r 1 -vf scale=210:118 -f image2 neemq3yf-%03d.jpeg
+2018-02-27 18:22:08,899 [22] INFO  - [Start Combine images] 47 images
+2018-02-27 18:22:08,971 [22] INFO  - [End Sprite] OutputFileName neemq3yf.jpeg / FileSize 256880
+2018-02-27 18:23:58,983 [22] INFO  - [Start Sprite] SourceFilePath 1j0qhqj5.mp4
+2018-02-27 18:23:58,983 [22] INFO  - [Launch command] ffmpeg -y -i 1j0qhqj5.mp4 -r 1 -vf scale=210:118 -f image2 sfto5dur-%03d.jpeg
+2018-02-27 18:24:01,032 [22] INFO  - [Start Combine images] 47 images
+2018-02-27 18:24:01,110 [22] INFO  - [End Sprite] OutputFileName sfto5dur.jpeg / FileSize 256880

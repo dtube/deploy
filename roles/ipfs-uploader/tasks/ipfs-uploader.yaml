@@ -1,21 +1,20 @@
-- name: Installing ffmpeg with apt on non-gpu hosts
+- name: Installing ffmpeg with apt
   apt:
     name: "{{ item }}"
     state: latest
   with_items:
     - 'ffmpeg'
-  when: ansible_distribution_major_version == "9"
 
 - name: Exporting environment variable for cpu hosts
   lineinfile:
         dest: /etc/environment
         state: present
-        regexp: '^ASPNETCORE_ENVIRONMENT=prodcpu'
-        line: 'ASPNETCORE_ENVIRONMENT=prodcpu'
+        regexp: '^ASPNETCORE_ENVIRONMENT=prod_cpu'
+        line: 'ASPNETCORE_ENVIRONMENT=prod_cpu'
         create: true
   when: ansible_distribution_major_version == "9"
 
-- name: Copying ipfs-uploader from local host.
+- name: Copying ipfs-uploader from local host
   copy:
     src: ipfs-uploader.zip
     dest: /home/heimindanger/ipfs-uploader.zip
@@ -46,7 +45,7 @@
   become_method: sudo
 
 - name: Starting ipfs-uploader in afforementioned tmux session as heimindanger
-  command: tmux send -t upldr.0 "dotnet /home/heimindanger/ipfs-uploader/bin/release/netcoreapp2.0/Uploader.dll" ENTER
+  command: tmux send -t upldr.0 "ASPNETCORE_ENVIRONMENT=prod_gpu dotnet /home/heimindanger/ipfs-uploader/Uploader.Web/bin/Release/netcoreapp2.0/publish/Uploader.Web.dll" ENTER
   become: true
   become_user: heimindanger
   become_method: sudo

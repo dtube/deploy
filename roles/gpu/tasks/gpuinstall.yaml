@@ -2,8 +2,8 @@
   lineinfile:
         dest: /etc/environment
         state: present
-        regexp: '^ASPNETCORE_ENVIRONMENT=prodgpu'
-        line: 'ASPNETCORE_ENVIRONMENT=prodgpu'
+        regexp: '^ASPNETCORE_ENVIRONMENT=prod_gpu'
+        line: 'ASPNETCORE_ENVIRONMENT=prod_gpu'
         create: true
 
 - name: Copying ffmpeg to host.
@@ -30,7 +30,6 @@
 
 - name: Updating apt to see non-free items
   apt:
-    upgrade: yes
     update_cache: yes
 
 - name: Installing dependancies with apt
@@ -61,5 +60,3 @@
   args:
     creates: /usr/bin/nvidia-smi
   become: true
-
-#./ffmpeg -y -hwaccel cuvid -c:v h264_cuvid -vsync 0 -i 1.mp4 -vf scale_npp=1920:1072 -vcodec h264_nvenc nannalout.mp4

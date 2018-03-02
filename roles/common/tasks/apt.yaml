@@ -5,7 +5,7 @@
 - name: Downloading Nodejs 9.x installation script
   get_url:
     url: https://deb.nodesource.com/setup_9.x
-    checksum: sha256:58cc07fc167b95af418c88580f9ae31d275e88cb2397d5bb270e19e7f298cddc
+    checksum: sha256:78a769f33d1c5c818f84bc7c44ddb5960361b2b36ae6ae0f59425af21ecb771c
     mode: 0777
     dest: /home/dabbott/setup.sh
 
