@@ -1,8 +1,39 @@
+- name: Cleaning old ipfs-uploader directory
+  file:
+    state: directory
+    path: /home/heimindanger/ipfs-uploader/
+  listen: new ipfs-uploader
+
+
 - name: Installing new ipfs-uploader
   unarchive:
+    remote_src: yes
     src: /home/heimindanger/ipfs-uploader.zip
     dest: /home/heimindanger/
-  notify: Ending old ipfs-uploader instance
+  listen: new ipfs-uploader
+
+- name: Moving tmux session working directory to /home/heimindanger/
+  command: tmux send -t upldr.0 "cd /home/heimindanger/" ENTER
+  become: true
+  become_user: heimindanger
+  become_method: sudo
+  listen: new ipfs-uploader
 
 - name: Ending old ipfs-uploader instance
   command: pkill dotnet -9
+  listen: new ipfs-uploader
+  ignore_errors: yes
+
+- name: Moving tmux session working directory to /home/heimindanger/ipfs-uploader/
+  command: tmux send -t upldr.0 "cd /home/heimindanger/ipfs-uploader/" ENTER
+  become: true
+  become_user: heimindanger
+  become_method: sudo
+  listen: new ipfs-uploader
+
+- name: Starting ipfs-uploader in afforementioned tmux session as heimindanger
+  command: tmux send -t upldr.0 "dotnet /home/heimindanger/ipfs-uploader/bin/release/netcoreapp2.0/Uploader.dll" ENTER
+  become: true
+  become_user: heimindanger
+  become_method: sudo
+  listen: new ipfs-uploader

@@ -1,4 +1,4 @@
-- name: Exporting environment variable for cpu hosts
+- name: Importing backports sources list.
   lineinfile:
         dest: /etc/apt/sources.list.d/backports.list
         state: present
