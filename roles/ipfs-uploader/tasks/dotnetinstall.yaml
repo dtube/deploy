@@ -1,3 +1,18 @@
+- name: Importing backports sources list.
+  lineinfile:
+        dest: /etc/apt/sources.list.d/backports.list
+        state: present
+        regexp: '^deb http://ftp.debian.org/debian jessie-backports main'
+        line: 'deb http://ftp.debian.org/debian jessie-backports main'
+        create: true
+  when: ansible_distribution_major_version == "8"
+
+- name: Update apt cache so we can see backports.
+  apt:
+    update_cache: yes
+  become: yes
+  when: ansible_distribution_major_version == "8"
+  
 - name: Installing dotnet requirements with apt & git
   apt:
     name: "{{ item }}"
@@ -12,6 +27,8 @@
     - libkrb5-3
     - zlib1g
     - git
+    - 'ffmpeg'
+
 
 - name: Downloading Microsoft key
   get_url:
