@@ -10,3 +10,4 @@
   template:
     src: templates/default.j2
     dest: /etc/nginx/sites-enabled/default
+  notify: Reloading nginx service

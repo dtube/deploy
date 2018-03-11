@@ -1,4 +1,1 @@
-- name: Installing imagemagick for snap
-  apt:
-    name: imagemagick
-    state: latest
+

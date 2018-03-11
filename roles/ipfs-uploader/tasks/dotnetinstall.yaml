@@ -12,7 +12,7 @@
     update_cache: yes
   become: yes
   when: ansible_distribution_major_version == "8"
-  
+
 - name: Installing dotnet requirements with apt & git
   apt:
     name: "{{ item }}"
@@ -27,8 +27,8 @@
     - libkrb5-3
     - zlib1g
     - git
-    - 'ffmpeg'
-
+    - ffmpeg
+    - imagemagick
 
 - name: Downloading Microsoft key
   get_url:

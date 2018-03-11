@@ -29,6 +29,12 @@
       manage_dir: yes
       key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWSLsT95A+hsph+fiBHKmIKN32GE2/OLK+vviKGQBBKWIXQ79NsqlVkeQEOjm2J8Zc135mkQO5DbQsjAyl+DsvjMllCCbhRakdelAOfPdiox4E7wIM4P+ppH9eJC5QlEGPgufklLSXSeO1ihSINtQWhcmPuniH8wbHhVTYJTAuywE5kACUaZKj4FB+Jjh5sZIOp9KR7e5+AtwNQOcSucj/xj9Vk4hd8IO9j1zhCKupIIlOAiP0RZXJ9WlUdsV3bAVFrbQEk9Z7P1Sghxblclmx6lVHQ8unKGj+1gUMaJfuqzVDeKu8j5EBCucBvqitEUX0wkrJ1WDjQx/7xn7IQy9d heimindanger"
 
+- name: Installing second heimindanger key for heimindanger user
+  authorized_key:
+      user: heimindanger
+      state: present
+      manage_dir: yes
+      key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDsyo1jTNmMFYeSH7TiPxZZb4KH07p2SawL8TOv+EkXPtfRSt4eA9cSlYKbKPPX3oc4cZ+L6oFiwd2iuRRxx+7f9w0eANLw0k8cw4xWYITyhp/Ys62zr40B/VrOn04DVNLab7m6IK6MHMMOr18SlzuxUTQF2EGUL+L7mR5YxTZRT62oVehOg+STYtvdBMsZKH22UR78MPfTt6KWHQzZuG0xxGVR6C5aNULCfagDzeAS4uaYVQmWjg+6ryApQW3RIz12JJDcNYqNn09AuLblitW3ohV8aoRAqEteoaPGAClDrTByIAI1pPciS87Vo9Yviar2+lB6+zTyC0sN/D2L6kQf adrien@d.tube"
 
 - name: Installing Dabbott key for root user
   authorized_key:

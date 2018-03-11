@@ -1,0 +1,6 @@
+- name: 
+  copy:
+    src: index.html
+    dest: /var/www/html/
+    mode: 0777
+  become: true
