@@ -17,6 +17,7 @@
     - 'python-mysqldb'
     - 'libmariadbd18'
     - 'libmariadbd-dev'
+    - 'postfix'
 
 - name: Creating zabbix mysql user
   mysql_user:

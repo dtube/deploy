@@ -9,7 +9,7 @@ Inventory file looks like the below for production deployment
     [upldr]
     upldr[1:6].d.tube
     [upldrg]
-    upldrg1.d.tube
+    upldrg[1:4].d.tube
     [snap]
     snap1.d.tube
     [zabbix]
