@@ -36,4 +36,13 @@
   become: true
   become_user: heimindanger
   become_method: sudo
+  when: ansible_distribution_major_version == "8"
+  listen: new ipfs-uploader
+
+- name: Starting ipfs-uploader in afforementioned tmux session as heimindanger as a CPU instance
+  command: tmux send -t upldr.0 "ASPNETCORE_ENVIRONMENT=prod_cpu dotnet /home/heimindanger/ipfs-uploader/Uploader.Web/bin/Release/netcoreapp2.0/publish/Uploader.Web.dll" ENTER
+  become: true
+  become_user: heimindanger
+  become_method: sudo
+  when: ansible_distribution_major_version == "9"
   listen: new ipfs-uploader

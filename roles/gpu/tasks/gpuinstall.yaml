@@ -42,6 +42,7 @@
     - libnppi6.0
     - yasm
     - linux-headers-3.16.0-4-amd64
+    - linux-headers-3.16.0-4-common
 
 - name: Updating boot config
   command: update-initramfs -u

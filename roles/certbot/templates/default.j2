@@ -1,6 +1,6 @@
  server {
  listen 443 default_server;
- client_max_body_size 100G;
+ client_max_body_size 2G;
  access_log /var/log/nginx/access.log;
 
  ssl_certificate /etc/letsencrypt/live/{{ ansible_hostname }}.d.tube/fullchain.pem;
